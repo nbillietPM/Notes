@@ -1,0 +1,93 @@
+\section{Definitions}
+
+terms to clarify and define
+
+-synonyms
+    - In botanical nomenclature, a synonym is a scientific name that applies to a taxon that now goes by a different scientific name
+        - Homotypic, or nomenclatural, synonyms (sometimes indicated by ≡) have the same type (specimen) and the same taxonomic rank.
+            - taxonomic rank (which some authors prefer to call nomenclatural rank[1] because ranking is part of nomenclature rather than taxonomy proper, according to some definitions of these terms) is the relative or absolute level of a group of organisms (a taxon) in a hierarchy that reflects evolutionary relationships.
+                - Ranks can be either relative and be denoted by an indented taxonomy in which the level of indentation reflects the rank, or absolute, in which various terms, such as species, genus, family, order, class, phylum, kingdom, and domain designate rank.
+        - Heterotypic, or taxonomic, synonyms (sometimes indicated by =) have different types.
+    - In zoology, moving a species from one genus to another results in a different binomen, but the name is considered an alternative combination rather than a synonym
+    - Unlike synonyms in other contexts, in taxonomy a synonym is not interchangeable with the name of which it is a synonym. 
+      In taxonomy, synonyms are not equals, but have a different status. For any taxon with a particular circumscription, position, and rank, only one scientific name is considered to be the correct one at any given time (this correct name is to be determined by applying the relevant code of nomenclature)
+      - circumscription
+        - content of a taxon, that is, the delimitation of which subordinate taxa are parts of that taxon. For example, if we determine that species X, Y, and Z belong in genus A, and species T, U, V, and W belong in genus B, those are our circumscriptions of those two genera. Another systematist might determine that T, U, V, W, X, Y, and Z all belong in genus A.
+        - A goal of biological taxonomy is to achieve a stable circumscription for every taxon. This goal conflicts, at times, with the goal of achieving a natural classification that reflects the evolutionary history of divergence of groups of organisms
+    - A synonym cannot exist in isolation: it is always an alternative to a different scientific name. Given that the correct name of a taxon depends on the taxonomic viewpoint used (resulting in a particular circumscription, position and rank) a name that is one taxonomist's synonym may be another taxonomist's correct name (and vice versa).
+    - Synonyms may arise whenever the same taxon is described and named more than once, independently. They may also arise when existing taxa are changed, as when two taxa are joined to become one, a species is moved to a different genus, a variety is moved to a different species, etc. 
+    - Synonyms also come about when the codes of nomenclature change, so that older names are no longer acceptable
+
+-phylogenetic tree
+    * a diagram that depicts the lines of evolutionary descent of different species, organisms, or genes from a common ancestor
+        - useful for organizing knowledge of biological diversity, for structuring classifications, and for providing insight into events that occurred during evolution
+        - Founder event
+            - Occurence when a specific species becomes isolated from the 'main' population due to for example settling on a geographically isolated location and thus evolving seperately from this main population into a seperate evolutionary line
+        - Vicariance/Allopatric Speciation
+            - mode of speciation that occurs when biological populations become geographically isolated from each other to an extent that prevents or interferes with gene flow.
+              Various geographic changes can arise such as the movement of continents, and the formation of mountains, islands, bodies of water, or glaciers. Human activity such as agriculture or developments can also change the distribution of species populations.
+        - Reproductive isolation
+            - collection of evolutionary mechanisms, behaviors and physiological processes critical for speciation. They prevent members of different species from producing offspring, or ensure that any offspring are sterile. These barriers maintain the integrity of a species by reducing gene flow between related species.
+            - Different forms of RI 
+                - Pre zygotic isolation
+                    - Temporal/Habit isolation (Allochronic)
+                        - different habitats, physical barriers, and a difference in the time of sexual maturity or flowering
+                    - Behavioral isolation
+                        - The different mating rituals of animal species
+                    - Mechanical isolation
+                        - Incompatibility in reproductive organs 
+                    - Gamete isolation
+                - Post zygotic isolation
+                    - Zygote mortality and non viability
+                    - Hybrid sterility
+    * Most phylogenetic trees are rooted, meaning that one branch (which is usually unlabeled) corresponds to the common ancestor of all the species included in the tree
+    * The labels at the "tips" of a phylogeny can correspond to individual organisms, to species, or to sets of species, as long as each tip makes up a separate branch on the tree of life. In fact, in certain contexts, the tips can even correspond to individual genes
+    * the branching points within a tree, which correspond to inferred speciation events, are called nodes. Each node represents the last common ancestor of the two lineages descended from that node. Internal branches or internodes connect two nodes, whereas external branches connect a tip and a node. 
+    * A clade is a piece of a phylogeny that includes an ancestral lineage and all the descendants of that ancestor. This group of organisms has the property of monophyly (from the Greek for "single clan"), so it may also be referred to as a monophyletic group.
+        - A clade or monophyletic group is easy to identify visually: it is simply a piece of a larger tree that can be cut away from the root with a single cut. Accordingly, if a tree needs to be cut in two places to extract a given set of taxa, then those taxa are non-monophyletic. 
+    * Branch lengths are irrelevant--they are simply drawn in whatever way makes the tree look most tidy.  In some instances, rectangular phylogenetic trees are drawn so that branch lengths are meaningful. These trees are often called phylograms, and they generally depict either the amount of evolution occurring in a particular gene sequence or the estimated duration of branches
+    * Tree diagrams can depict the same information yet be oriented in different ways.
+
+        ** Newick and nexus format of trees
+        - NEWICK is a text-based format for representing trees in computer-readable form using (nested) parentheses and kommas. 
+                -The newick tree occurs on a single line, starting with a greater-than ('>') symbol in the first column and a tree-recognition string, in our case 'Tree' or 'Star', immediateley followed by the (nested) parentheses describing the relations between the species involved in your study:
+                e.g.
+                        >Star(species1:branchlength1,species2:branchlength2,species3:branchlength3);
+                -The names of the species involved should be exactly the species-identifiers used in your sequences FASTA file (in this file, the species names also follow the greater than '>' symbol in the sequence identifier lines, see Fasta format). A branchlength consists of integers and (if decimal numbers) a dot (no komma!). Branchlenghts are always preceded by a colon symbol ':'. Internal nodes may but do not need to be identified by a string (we do not further use such node strings in our software). The description of 'NODE1' above is thus optional. The whole line is loaded as one unit, so no white spaces or tabs are allowed in any of the identifiers or numbers or before or after parentheses, kommas or colons. 
+
+* https://www.nature.com/scitable/topicpage/reading-a-phylogenetic-tree-the-meaning-of-41956/
+** http://bioinformatics.intec.ugent.be/MotifSuite/treeformat.php
+
+-EEA reference grid
+    - Based on equal area projection
+    - suitable for generalising data, statistical mapping and analytical work whenever a true area representation is required
+    - Recommended grid resolutions are 100 m, 1 km, 10 km and 100 km. Alternatively, 25 m or 250 m resolution can be used for
+      analysis purposes, where the standard 100 m or 1 km grid cell size is not appropriate.
+    - The objective of the coding system is to generate unique identifiers for each cell, for any of the
+      recommended resolutions.
+        - cell code is a text string, composed of cell size and cell coordinates. 
+            - Cell codes start with a cell size prefix. The cell size is denoted in meter (m) for cell sizes below 1000 m and
+              kilometre (km) for cell sizes from 1000 m and above.
+            - The coordinate part of the cell code reflects the distance of the lower left grid cell corner from the false
+              origin of the CRS. In order to reduce the length of the string, Easting (E) and Northing (N) values are divided
+              by 10n (n is the number of zeros in the cell size value).
+
+Diversity metrics
+
+*Biodiversity indicators: the choice of values and measures(https://d1wqtxts1xzle7.cloudfront.net/44118677/Biodiversity_indicators_the_choice_of_va20160326-26444-11ff5zs-libre.pdf?1458990012=&response-content-disposition=inline%3B+filename%3DBiodiversity_indicators_the_choice_of_va.pdf&Expires=1736415372&Signature=fsa7kPrRWDShiA0XDYCKYSgNfm5hOMrv2wqtbFyILAjqaqtLpCfN-6CQLEYN~9o2VcOHlU83TVLATlLhveUhPfIONKtBxDrgjNDzdyrNhbrUiKuiMQwohQmL-oqRlEZLZIw5AlNWqpgbEGcUTZz32~9PUxx~PhiHL6NOpozzecfMI9K5DooaoQQHBF0eyIRKr-H4~2YvWPbma3VPIYkuaDc5B6BTJm7wNT715YZ6NwWs7Lx0Wn1ouCSBy6bpPoFQGSIE-n8CxUMcQFVpq3TPxUF3VUlKCpPcSEUomrTCScPEX9h-nmcI-FRP6Pr7-qw1uiKtCtiRira1OJceTFgstw__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA)
+*Conservation evaluation and phylogenetic diversity
+*Phylogenetic diversity (PD) and biodiversity conservation:some bioinformatics challenges
+\section{Libraries}
+
+ape 
+- Analysis of Phylogenetic Evolution
+- functions for reading, writing, manipulating, analysing, and simulating phylogenetic
+trees and DNA sequences, computing DNA distances, translating into AA sequences, estimating
+trees with distance-based methods, and a range of methods for comparative analyses and analysis
+of diversification
+
+ott (Open Tree of life Taxonomy)
+- The Open Tree of Life Taxonomy (OTT from now on) synthesizes taxonomic information from different sources and assigns each taxon a unique numeric identifier, which we refer to as the OTT id
+    - Tree IDs are a sequence of integers (5?)
+- To deal with synonyms and scientific name misspellings, the Open Tree Taxonomy uses the Taxonomic Name Resolution Service (TNRS from now on), that allows linking scientific names to a unique OTT id, while dealing with misspellings, synonyms and scientific name variants. The functions from rotl that interact with OTT’s TNRS start with “tnrs_”.
+

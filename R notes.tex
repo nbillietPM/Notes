@@ -1,0 +1,55 @@
+%...% operators
+
+%>% has no builtin meaning but the user (or a package) is free to define operators
+of the form %whatever% in any way they like. For example, this function will
+return a string consisting of its left argument followed by a comma and space 
+and then it's right argument.
+
+Differences between %.% (dplyr) and %>% (magrittr)
+Differences include
+
+    you can use a . as placeholder for the left-hand side, e.g.
+
+     iris %>% plot(Sepal.Length ~ Sepal.Width, data = .)
+
+    %>% respects (rhs), e.g.
+
+     1:10 %>% (call("sum"))
+     1:10 %>% (function(x) x^2 + 2*x) 
+
+
+Practical: Introduction to Phylogenetics in R
+    https://eeob-macroevolution.github.io/Practicals/Intro_to_Phylo/intro_to_phylo.html
+
+%in% can be used to verify if an item is present in a list, vector or matrix
+
+matrix indexing
+    - matrix[i,] access the ith row in a matrix
+    - matrix[,j] accessn the jth column in a matrix
+    - matrix[c(i,j),] or matrix[,c(i,j)] access rows or columns i and j
+
+matrix modifications
+    - cbind to add an additional column
+    - rbind to add an additional row
+    - negative indexing to remove columns, rows or elements
+
+matrices are limited to 2D in R, array is a more generalized construct that allows for N dimensional tensors
+    array(valVec, dim=(nrow, ncol, ndepth,...))
+
+data.frame
+    - data.frame(col1Name=c(val11, val12,...),
+                 col2Name=c(val21, val22,...),
+                 ...,
+                 colnName=c(valn1, valn2,...))
+    - accessing columns 
+        - indexing df[i]
+        - colname indexing
+            - df[["colName"]]
+            - df$colnName
+
+Factors
+    - usefull when dealing with categorical data
+    - have a fixed and known set of values
+
+R plots 
+    - 

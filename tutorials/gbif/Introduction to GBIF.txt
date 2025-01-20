@@ -1,0 +1,67 @@
+4 types of method in the API
+	1) Get -> Access data
+	2) Post -> Send data
+	3) Put -> Update data
+	4) Delete -> Delete data
+
+5 different API's
+	1) Registry
+		- Datasets
+		- Organizations
+		- Installations
+		- GrSciColl
+	2) Species
+		- Taxa
+		- checklists
+		- backbone
+	3) Occurence
+		- Occurences
+		- Statistics
+	4) Maps
+		- Occurence maps
+	5) Literature
+		- Citations
+
+GET method
+	General form:	https://base url/api/function?parameter-query
+
+curl
+--include
+--user username:PASSWORD
+--header "Content-Type:application/json"
+--data @query.json
+https://api.gbif.org/v1/apiName/download/request
+
+JSON query 
+	{
+	"creator":"username",
+	"notificationAddresses":["userEmail@organization.org"],
+	"sendNotification":true,
+	"format":"SIMPLE_CSV",
+	"predicate":{}
+	}
+
+Predicate
+	- similarity => equals & like
+	- logical operators => and, or, not
+	- list comparison => in
+	- comparison => greaterThan, greaterThanOrEquals, lessThan, lessThanOrEquals
+	- range check => within
+	- distance check => geoDistance
+	- value check => isNull & isNotNull
+
+e.g.
+	{"type":"and",
+	 "predicates":[
+		{"type":"in",
+		 "key":"TAXON_KEY",
+		 "values":["23872476", "", ""]},
+		{"type":"isNotNull",
+		 "parameter":"YEAR"}
+		]
+	}
+
+-------------------------------------------------
+Basis of record
+	- https://docs.gbif.org/course-data-use/en/basis-of-record.html
+

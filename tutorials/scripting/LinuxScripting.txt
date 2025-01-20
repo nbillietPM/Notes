@@ -1,0 +1,163 @@
+Upon launch of shell it uses a startup script located in .bashrc or .bash_profile in which behavior of the shell can be customized
+
+Shell is interactive it displays this with a $ sign
+    [username@host ~]$
+
+When shell is running as root the prompt is a # sign
+    [root@host ~]#
+
+The root shell is a shell with administrator priviliges
+    - Allows for unrestricted changes
+    - Access to all files on a system
+
+A bash script is a series of shell commands written in a .sh file
+
+All bash script start with a '#! /bin/bash'
+    -> execute shell via bash shell 
+
+which bash
+    -> returns the path to your bash shell
+
+Modification of the bash script right
+    -> chmod u+x
+        'Ch'ange 'Mod'e for 'u' where we 'add' e'x'ecution rights
+
+execution of bash script    
+    -> ./bashScriptName.sh 
+    -> bash bashScriptName.sh 
+
+====Bash Scripting Syntax====
+
+Defining variables with '=' sign
+
+Refering to variables using the '$' sign 
+
+Standard mathematical operators as defined in traditional programming languages
+
+I/O operations
+    - 'read' to enable reading in from the console prompt
+    - 'echo' to write to the console prompt
+
+Logical comparisson
+    - uses '-eq', '-ge', etc.
+
+if [condition]
+    then
+        commands 
+fi
+
+for iter in {iterVals}
+    do
+        commands
+done
+
+cd -> Change Directory
+    - Without anything 'cd' will return us to the home Directory. This is analogous to 'cd ~userName'
+    - Using '.' will refer to the current working Directory
+    - Using '..' will refer to the parent of the current working Directory
+
+ls -> LiSt the contents of a direcotry 
+    - 'ls -l' list all things in the long format
+        - Long format has a general structure
+            e.g. '-rw-------   1 me       me            576 Apr 17  2019 weather.txt' 
+            1) File permissions '-rw-------'
+            2) Owner of file 'me'
+            3) Group name that has permissions in addition to owner 'me'
+            4) Size in bytes '576'
+            5) Last date/time of modification 'Apr 17 2019'
+            6) Filename 'weather.txt'
+    - 'ls -a' show all files,  including the hidden ones 
+
+General files and folders present on Linux
+    - '/boot' storage of the linux kernel (vmlinuz) and boot loader files
+    - '/bin' contains essentials programs that allows system operations
+        - '/sbin' directory for system administration
+    - '/etc' storage of system configuration files
+    - '/var' contains all the files that change when system is running such as log file
+    - '/dev' contains devices that are available on the system
+    - '/proc' completely virtual directory that contains numbered entries that correspond to processes running on the system
+
+String matching
+    - Bash allows for regular expression searching to match file names
+        - '*' wild card character that matches anything
+            - e.g.1 '*.html' get all things ending with '.html'
+            - e.g.2 'g*' get all things starting with the letter 'g'
+        - '?' wild card character that matches a single character 
+            - e.g. 'a?' will match anything starting with an 'a' followed by 1 character so 'ab', 'ag', ...
+        - '[chars]' matches anything that is a member of the set of characters
+            - different commands for predefined sets exists
+                - '[[:alnum:]]' matches any of the alphanumeric chars 
+                - '[[:alpha:]]' matches any of the alphabetic chars 
+                - '[[:digit:]]' matches any of the numerals
+                - '[[:upper:]]' matches any of the alphabetic chars in uppercase form 
+                - '[[:lower:]]' matches any of the alphabetic chars in lowercase form 
+            - e.g.1 '[ab]c' matches 'ac' and 'ab'
+            - e.g.2 '[[:digit:]]a' matches '1a', '2a', ..., '9a'
+        - '!' is the exclusion character or the logical not
+            - '[!chars]' matches anything that is not part of the set of chars 
+        
+I/O redirection
+    - '>' can be used to stream results from the left hand to the right hand    
+        - e.g. 'ls > fileList.txt' stream everything from the ls command to the file fileList.txt
+        - '>' streams everything to the beginning of the righthand side and thus overwrites what was currently there
+    - '>>' works similary but instead of overwriting it appends 
+    - '<' directs the right hand side as the input for the lefthand side
+        - e.g. 'sort < fileList.txt' sorts alls the entries from the fileList.txt file 
+
+Pipelines
+    - Chaining method for different commands in which I/O redirection is important
+    - 'cmd | func | ...'
+        - e.g.1 'ls -lt | head'
+            - 'ls -lt' -> list all items in long format according to most recent modification date
+            - 'head' -> show first 10 items
+            - 'ls -lt | head' -> show the first 10 items of everything listed in the current directory according to most recently modified where the files are displayed in long format
+
+Expansions
+    - Certain commands in are shortcuts for other commands and are thus 'expanded' into a form that is understandble for the shell to execute
+        -e.g. 'echo *' does not print '*' to the output but instead prints everything that is present the curretn working directory
+    - There are 9 types of shell Expansions 
+        1) Tilde expansion '~' returns the value of the $HOME directory 
+        2) Arithmetic expansion '$(expr)' executes the arithmetic before printing it
+        3) Brace expansion '{}' iterates over all elements in the braces 
+            e.g. 'echo Front-{A,B,C}-Back' will return 'Front-A-Back Front-B-Back Front-C-Back'
+        4) Parameter expansion with '$'
+            - The basic form of parameter expansion is ${parameter}
+
+Permissions
+    - Different commands for dealing or changing file permissions
+        - chmod,  CHange MODe and adjust the permissions of a file
+        - su, SuperUser ownership where you are forced to share root password to other usersq 
+        - sudo, SuperUser ownership where you execute without root password
+        - chown, CHange OWNership
+        - chgrp, CHange GRouP ownership
+    - General permission structure
+        - fileType[ownerPermissions][groupOwnerPermissions][userPermissions]
+            - filetype indicates the type of file you are dealing with 
+                - '-' regular file which includes documents, scripts and executables
+                - 'd' directory file 
+                - 'l' symbolic links that refer to another file or directory
+                - 'c' character device files that represent devices that handle data as characters
+                - 'b' block device files that manage data in blocks such as drives
+                - 's' sockets used in network communications to create links between processes 
+                - 'p' FIFOs (Named Pipes) 
+            - Permissions are 3 characters '...' that deal with
+                1) The first is reading permission and is displayed as 'r' if enabled
+                2) The second is writing permission and is displayed as 'w' if enabled 
+                3) The third is execution permission and is displayed as 'x' if enabled 
+                4) If one of these options is disabled they get replaced with the '-' character 
+                    e.g. 'rw-' has reading and writing permission but does not have permission to execute
+        - Permissions are often displayed in octal notation
+            - 3 different states, i.e. reading, writing and executing that have a binary condition
+                - rwx = 111 = 7
+                - rw- = 110 = 6
+                - r-x = 101 = 5
+                - r-- = 100 = 4
+                - -wx = 011 = 3
+                - -w- = 010 = 2
+                - --x = 001 = 1
+                - --- = 000 = 0
+            - A combination of 3 integers ranging between 0 and 7 is an alternative way of displaying permission strings
+                - e.g. 777 = rwxrwxrwx -> no restrictions on permission 
+
+Job control
+    - Putting a program in the background can be done by putting the '&' sign behind the program name

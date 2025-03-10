@@ -1,4 +1,4 @@
-library(rgbif)
+, ,library(rgbif)
 "
 In order to use the rbgif interface we need to have
   - a GBIF username

@@ -10,6 +10,9 @@ cube <- ex_data$cube
 grid <- ex_data$grid
 pa <- ex_data$pa
 
+
+grid
+
 options(width = 1000)
 plot(tree, cex = 0.35, y.lim = 100)
 
@@ -77,6 +80,8 @@ head(mcube)
 6 Quercus palustris Quercus palustris
 "
 
+nrow(mcube)
+nrow(cube)
 check_completeness(mcube)
 "
 The following species are not part of the provided phylogenetic tree:
@@ -111,7 +116,12 @@ unique_name     orig_tiplabel
 5   Castanea sativa   Castanea sativa
 6 Quercus palustris Quercus palustris
 "
+
+mcube$species %in% tree$tip.label
+
 PD_cube <- get_pd_cube(mcube, tree, metric = "faith")
+
+PD_cube
 
 PDindicator <- generate_map_and_indicator(PD_cube, grid, "Fagales")
 PDindicator
